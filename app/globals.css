@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0f19;
+  --card: rgba(255, 255, 255, 0.05);
+  --card-hover: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.12);
+  --gold: #ffc83d;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: #fff;
+  background-color: var(--bg);
+  /* Glows + blueprint grid in one declaration (the separate .blueprint rule used to wipe out the glows). */
+  background-image:
+    radial-gradient(1200px 800px at 15% -10%, rgba(255, 200, 61, 0.10), transparent 60%),
+    radial-gradient(900px 600px at 90% 20%, rgba(0, 150, 255, 0.10), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(255, 200, 61, 0.35);
+}
+
+@layer components {
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+  }
+
+  .card-hover {
+    @apply transition duration-200 hover:-translate-y-0.5 hover:border-gold/40;
+  }
+
+  .card-hover:hover {
+    background: var(--card-hover);
+  }
+
+  .link {
+    @apply underline underline-offset-4 decoration-gold/60 hover:decoration-gold hover:text-gold-soft transition;
+  }
+
+  .label {
+    @apply block text-sm text-white/80;
+  }
+
+  .input {
+    @apply mt-2 w-full px-3.5 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-white/35
+      outline-none transition focus:border-gold/70 focus:ring-2 focus:ring-gold/25 disabled:opacity-60;
+  }
+
+  .input[aria-invalid='true'] {
+    @apply border-red-400/60;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl font-semibold transition
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2
+      focus-visible:ring-offset-ink disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-gold text-black hover:bg-gold-soft active:bg-gold-deep;
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/20 text-white hover:bg-white/10 font-medium;
+  }
+
+  .btn-sm {
+    @apply px-3 py-2 text-sm rounded-xl;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium border;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-gold;
+  }
+}
+
+select option,
+select optgroup {
+  color: #0b0f19;
+  background: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
