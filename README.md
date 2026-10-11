@@ -267,4 +267,5 @@ Contributions and suggestions are welcome.
 
 ## License
 
-A standalone `LICENSE` file has not been included in the supplied project archive. Licensing will be added consistently across the project repositories in the final licensing step.
+This project is licensed under the MIT License.
+See the [LICENSE](LICENSE) file for details.
